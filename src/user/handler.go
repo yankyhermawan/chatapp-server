@@ -43,6 +43,7 @@ func AuthMiddlewareHandler(c *gin.Context) {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"errorMessage": "Invalid token",
 		})
+		return
 	}
 	token := splittedToken[1]
 	response := AuthMiddleware(token)

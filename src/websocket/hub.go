@@ -4,6 +4,7 @@ import (
 	"chatapp/src/dto"
 	"chatapp/src/message"
 	"encoding/json"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -29,13 +30,15 @@ func NewHub(db *gorm.DB) *Hub {
 func emitSpecificUser(client *Client, mess dto.ReceivedMessage, h *Hub) {
 	if (client.UserId == mess.ReceiverId) || (client.UserId == mess.SenderId) {
 		messageToBeSend := dto.SendMessage{
-			Message:  mess.Message,
-			SenderId: mess.SenderId,
+			Message:    mess.Message,
+			SenderId:   mess.SenderId,
+			ReceiverId: mess.ReceiverId,
 		}
 		if (client.WsType == "chat") && (client.UserId == mess.SenderId) {
 			message.CreateMessage(h.Db, mess)
 		}
 		jsonBytes, _ := json.Marshal(messageToBeSend)
+		fmt.Printf("%s\n", jsonBytes)
 		select {
 		case client.Send <- jsonBytes:
 		default:

@@ -41,11 +41,12 @@ type FindUserResponse struct {
 
 type ReceivedMessage struct {
 	Message    string `json:"message"`
-	ReceiverId uint   `json:"receiverId"`
-	SenderId   uint   `json:"senderId"`
+	ReceiverId uint   `json:"receiver_id"`
+	SenderId   uint   `json:"sender_id"`
 }
 
 type SendMessage struct {
-	Message  string `json:"message"`
-	SenderId uint   `json:"senderId"`
+	Message    string `json:"message"`
+	SenderId   uint   `json:"sender_id"`
+	ReceiverId uint   `json:"receiver_id"`
 }
