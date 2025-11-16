@@ -1,0 +1,24 @@
+POST http://localhost:8080/user/register
+Content-Type: application/json
+
+{
+    "username": "yanky1",
+    "password": "yanky1",
+    "name": "Yanky1"
+}
+
+####
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+    "username": "asdf",
+    "password": "asdf"
+}
+
+###
+GET http://localhost:8080/user?search=as
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhc2RmIiwiZXhwIjoxNzYzMjgwOTMwfQ.VXEIwI0zodkkaPPJLkCi53FhBXdI5UAdKT_QebXBhgE
+
+###
+GET http://localhost:8080/socket.io/?userId=14&EIO=4&transport=polling&t=psb99qxg
